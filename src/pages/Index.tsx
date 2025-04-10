@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import FeaturedGames from '@/components/FeaturedGames';
+import GamePlayer from '@/components/GamePlayer';
 import GameCard from '@/components/GameCard';
 import { Button } from '@/components/ui/button';
 import { getAllGames, getPopularGames, Game } from '@/services/gameService';
@@ -14,6 +14,20 @@ const HomePage = () => {
   const [allGames, setAllGames] = useState<Game[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  
+  // Featured Geometry Dash Wave game
+  const featuredGame = {
+    id: "geometry-dash-wave",
+    title: "Geometry Dash Wave",
+    description: "Ride the wave and avoid obstacles in this challenging rhythm-based game. Test your reflexes as you navigate through increasingly difficult levels set to energetic music.",
+    gameUrl: "https://scratch.mit.edu/projects/105500895/embed",
+    category: "Arcade",
+    tags: ["Rhythm", "Platformer", "Challenge", "Wave"],
+    thumbnail: "/game-thumbnails/geometry-dash.jpg",
+    rating: 4.8,
+    plays: 24689,
+    releaseDate: "2023-09-15",
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +52,9 @@ const HomePage = () => {
     };
     
     fetchData();
+    
+    // Set page title for Geometry Dash Wave
+    document.title = "Geometry Dash Wave - Play Now | GameVoyage";
   }, []);
 
   return (
@@ -46,9 +63,45 @@ const HomePage = () => {
       
       <main className="flex-grow">
         <div className="container mx-auto px-4 py-8">
-          {/* Hero Section */}
+          {/* Featured Game - Geometry Dash Wave */}
           <section className="mb-12">
-            <FeaturedGames />
+            <h1 className="text-4xl font-bold mb-6 text-gaming-text">Geometry Dash Wave</h1>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <GamePlayer gameUrl={featuredGame.gameUrl} title={featuredGame.title} />
+              </div>
+              
+              <div className="bg-gaming-card rounded-lg p-6">
+                <h2 className="text-2xl font-bold mb-4">About the Game</h2>
+                <p className="text-gaming-muted mb-6">{featuredGame.description}</p>
+                
+                <div className="mb-6">
+                  <h3 className="font-semibold text-lg mb-2">How to Play</h3>
+                  <p className="text-gaming-muted">Use your mouse or spacebar to navigate the wave through obstacles. Time your jumps perfectly to the rhythm of the music to survive!</p>
+                </div>
+                
+                <div className="flex flex-wrap items-center gap-4 mb-6">
+                  <div className="flex items-center space-x-1 bg-gaming-card/50 px-3 py-1 rounded-full">
+                    <Star className="w-4 h-4 text-yellow-400" fill="currentColor" />
+                    <span className="text-sm">{featuredGame.rating.toFixed(1)}</span>
+                  </div>
+                  
+                  <div className="game-tag">
+                    {featuredGame.category}
+                  </div>
+                </div>
+                
+                <div className="mb-6">
+                  <h3 className="font-semibold text-lg mb-2">Tags</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {featuredGame.tags.map(tag => (
+                      <span key={tag} className="game-tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
           
           {/* Popular Games */}
