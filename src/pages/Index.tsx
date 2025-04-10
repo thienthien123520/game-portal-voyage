@@ -7,7 +7,7 @@ import FeaturedGames from '@/components/FeaturedGames';
 import GameCard from '@/components/GameCard';
 import { Button } from '@/components/ui/button';
 import { getAllGames, getPopularGames, Game } from '@/services/gameService';
-import { Fire, Trophy, Star, Sparkles } from 'lucide-react';
+import { Flame, Trophy, Star, Sparkles } from 'lucide-react';
 
 const HomePage = () => {
   const [popularGames, setPopularGames] = useState<Game[]>([]);
@@ -55,7 +55,7 @@ const HomePage = () => {
           <section className="mb-12">
             <div className="flex items-center justify-between mb-6">
               <h2 className="section-title flex items-center">
-                <Fire className="text-gaming-primary mr-2" size={24} />
+                <Flame className="text-gaming-primary mr-2" size={24} />
                 Popular Games
               </h2>
               <Link to="/games/popular" className="text-gaming-primary hover:text-gaming-secondary">
