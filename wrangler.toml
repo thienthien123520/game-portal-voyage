@@ -1,10 +1,11 @@
 
 name = "geometry-dash-wave"
 type = "webpack"
-account_id = ""
+account_id = "68f8a40cd52c3dedd66fa676e65889ba
+"
 workers_dev = true
 route = ""
-zone_id = ""
+zone_id = "43b0112b2b6ab3c8e97c5a935af98e52"
 compatibility_date = "2023-04-11"
 
 [site]
