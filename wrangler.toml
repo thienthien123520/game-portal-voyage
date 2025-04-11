@@ -1,0 +1,16 @@
+
+name = "geometry-dash-wave"
+type = "webpack"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+compatibility_date = "2023-04-11"
+
+[site]
+bucket = "./dist"
+entry-point = "workers-site"
+
+[env.production]
+workers_dev = false
+route = "*"
